@@ -26,8 +26,8 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
             onClick={() => onCategoryChange(category)}
             className={
               selectedCategory === category
-                ? "bg-yellow-400 hover:bg-yellow-500 text-black"
-                : "border-white/20 text-white hover:bg-white/10"
+                ? "bg-orange-500 hover:bg-orange-600 text-white"
+                : "border-purple-500/30 text-purple-300 hover:bg-purple-500/20"
             }
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
