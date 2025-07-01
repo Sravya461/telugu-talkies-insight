@@ -1,80 +1,24 @@
 
 import React, { useState } from 'react';
 import { Search, Award } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import MovieCard from '@/components/MovieCard';
 import FeaturedMovie from '@/components/FeaturedMovie';
 import CategoryFilter from '@/components/CategoryFilter';
+import AdvancedFeatures from '@/components/AdvancedFeatures';
 import { Link } from 'react-router-dom';
+import { movies, getLatestMovies } from '@/data/movies';
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const featuredMovie = {
-    id: 1,
-    title: "RRR",
-    director: "S.S. Rajamouli",
-    year: 2022,
-    rating: 9.2,
-    genre: ["Action", "Drama", "History"],
-    description: "A fictitious story about two legendary revolutionaries and their journey away from home before they started fighting for their country in 1920s.",
-    image: "https://images.unsplash.com/photo-1489599849989-7a5e91bf0d82?w=800&h=400&fit=crop",
-    cast: ["N.T. Rama Rao Jr.", "Ram Charan", "Alia Bhatt"],
-    language: "Telugu",
-    duration: "187 min",
-    trailerUrl: "https://www.youtube.com/watch?v=f_vbAtFSEc0"
-  };
+  const featuredMovie = movies[0]; // Use the first movie as featured
+  const latestMovies = getLatestMovies();
 
-  const movies = [
-    {
-      id: 2,
-      title: "Pushpa: The Rise",
-      director: "Sukumar",
-      year: 2021,
-      rating: 8.7,
-      genre: ["Action", "Crime", "Thriller"],
-      description: "A laborer named Pushpa makes enemies as he rises in the world of red sandalwood smuggling.",
-      image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
-      cast: ["Allu Arjun", "Fahadh Faasil", "Rashmika Mandanna"],
-      language: "Telugu",
-      duration: "179 min",
-      trailerUrl: "https://www.youtube.com/watch?v=pKctjlxbFDQ"
-    },
-    {
-      id: 3,
-      title: "Baahubali 2",
-      director: "S.S. Rajamouli",
-      year: 2017,
-      rating: 9.0,
-      genre: ["Action", "Drama"],
-      description: "When Shiva, the son of Baahubali, learns about his heritage, he begins to look for answers.",
-      image: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop",
-      cast: ["Prabhas", "Rana Daggubati", "Anushka Shetty"],
-      language: "Telugu",
-      duration: "167 min",
-      trailerUrl: "https://www.youtube.com/watch?v=sOEg_YZQsTI"
-    },
-    {
-      id: 4,
-      title: "Arjun Reddy",
-      director: "Sandeep Reddy Vanga",
-      year: 2017,
-      rating: 8.1,
-      genre: ["Drama", "Romance"],
-      description: "A short-tempered house surgeon gets used to drugs and drinks when his girlfriend is forced to marry another person.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
-      cast: ["Vijay Deverakonda", "Shalini Pandey"],
-      language: "Telugu",
-      duration: "182 min",
-      trailerUrl: "https://www.youtube.com/watch?v=2wXy3p9W8H8"
-    }
-  ];
+  const categories = ['all', 'action', 'drama', 'romance', 'thriller', 'comedy', 'family'];
 
-  const categories = ['all', 'action', 'drama', 'romance', 'thriller', 'fantasy'];
-
-  const filteredMovies = movies.filter(movie => {
+  const filteredMovies = latestMovies.filter(movie => {
     const matchesSearch = movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          movie.director.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || 
@@ -93,11 +37,12 @@ const Index = () => {
               <h1 className="text-2xl font-bold text-white">Telugu Cinema Hub</h1>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link to="/" className="text-white hover:text-orange-400 transition-colors font-medium">Home</Link>
+              <Link to="/" className="text-orange-400 font-medium">Home</Link>
               <Link to="/reviews" className="text-white hover:text-orange-400 transition-colors font-medium">All Reviews</Link>
               <Link to="/top-rated" className="text-white hover:text-orange-400 transition-colors font-medium">Top Rated</Link>
               <Link to="/latest" className="text-white hover:text-orange-400 transition-colors font-medium">Latest Movies</Link>
               <Link to="/upcoming" className="text-white hover:text-orange-400 transition-colors font-medium">Upcoming</Link>
+              <Link to="/contact" className="text-white hover:text-orange-400 transition-colors font-medium">Contact</Link>
             </nav>
           </div>
         </div>
@@ -112,7 +57,7 @@ const Index = () => {
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Your ultimate destination for Telugu movie reviews, ratings, and recommendations. 
-              Find your next favorite film from Tollywood's finest collection.
+              Find your next favorite film from Tollywood's finest collection of 500+ movies.
             </p>
           </div>
 
@@ -166,16 +111,27 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Advanced Features Section */}
+      <AdvancedFeatures />
+
       {/* Movies Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h3 className="text-3xl font-bold text-white mb-8 text-center">
             Latest Reviews & Ratings
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredMovies.map((movie) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {filteredMovies.slice(0, 12).map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
+          </div>
+          
+          <div className="text-center mt-8">
+            <Link to="/reviews">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+                View All 500+ Movies
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -190,7 +146,7 @@ const Index = () => {
                 <span className="text-xl font-bold text-white">Telugu Cinema Hub</span>
               </div>
               <p className="text-gray-400">
-                Your trusted source for Telugu movie reviews and recommendations.
+                Your trusted source for Telugu movie reviews and recommendations with 500+ movies covered.
               </p>
             </div>
             <div>
@@ -214,15 +170,15 @@ const Index = () => {
             <div>
               <h4 className="text-white font-semibold mb-4">Connect</h4>
               <ul className="space-y-2 text-gray-400">
+                <li><Link to="/contact" className="hover:text-orange-400 transition-colors">Contact Us</Link></li>
                 <li><a href="#" className="hover:text-orange-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-orange-400 transition-colors">Contact</a></li>
                 <li><a href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</a></li>
                 <li><a href="#" className="hover:text-orange-400 transition-colors">Terms of Service</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-purple-500/20 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Telugu Cinema Hub. All rights reserved. Made for Telugu movie lovers.</p>
+            <p>&copy; 2024 Telugu Cinema Hub. All rights reserved. Made for Telugu movie lovers with 500+ movies and 24 advanced features.</p>
           </div>
         </div>
       </footer>
