@@ -25,22 +25,22 @@ const Reviews = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-cyan-800">
       {/* Header */}
-      <header className="bg-black/30 backdrop-blur-md border-b border-purple-500/20 sticky top-0 z-50">
+      <header className="bg-black/30 backdrop-blur-md border-b border-cyan-500/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
-              <Award className="h-8 w-8 text-orange-400" />
+              <Award className="h-8 w-8 text-cyan-400" />
               <h1 className="text-2xl font-bold text-white">Telugu Cinema Hub</h1>
             </Link>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link to="/" className="text-white hover:text-orange-400 transition-colors font-medium">Home</Link>
-              <Link to="/reviews" className="text-orange-400 font-medium">All Reviews</Link>
-              <Link to="/top-rated" className="text-white hover:text-orange-400 transition-colors font-medium">Top Rated</Link>
-              <Link to="/latest" className="text-white hover:text-orange-400 transition-colors font-medium">Latest Movies</Link>
-              <Link to="/upcoming" className="text-white hover:text-orange-400 transition-colors font-medium">Upcoming</Link>
-              <Link to="/contact" className="text-white hover:text-orange-400 transition-colors font-medium">Contact</Link>
+              <Link to="/" className="text-white hover:text-cyan-400 transition-colors font-medium">Home</Link>
+              <Link to="/reviews" className="text-cyan-400 font-medium">All Reviews</Link>
+              <Link to="/top-rated" className="text-white hover:text-cyan-400 transition-colors font-medium">Top Rated</Link>
+              <Link to="/latest" className="text-white hover:text-cyan-400 transition-colors font-medium">Latest Movies</Link>
+              <Link to="/upcoming" className="text-white hover:text-cyan-400 transition-colors font-medium">Upcoming</Link>
+              <Link to="/contact" className="text-white hover:text-cyan-400 transition-colors font-medium">Contact</Link>
             </nav>
           </div>
         </div>
@@ -51,7 +51,7 @@ const Reviews = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-5xl font-bold text-white mb-4">
-              All Movie <span className="text-orange-400">Reviews</span>
+              All Movie <span className="text-cyan-400">Reviews</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Explore our comprehensive collection of over 500 Telugu movie reviews and ratings
@@ -68,7 +68,7 @@ const Reviews = () => {
                   placeholder="Search movies, directors, actors..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-white/10 border-purple-500/30 text-white placeholder-gray-400 h-12"
+                  className="pl-10 bg-white/10 border-cyan-500/30 text-white placeholder-gray-400 h-12"
                 />
               </div>
               <CategoryFilter 
@@ -96,7 +96,7 @@ const Reviews = () => {
           {/* Load More Button */}
           {filteredMovies.length > 20 && (
             <div className="text-center mt-12">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+              <button className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
                 Load More Movies
               </button>
             </div>

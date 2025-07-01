@@ -24,27 +24,27 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Here you would typically send the form data to your backend
     alert('Thank you for your message! We will get back to you soon.');
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-cyan-800">
       {/* Header */}
-      <header className="bg-black/30 backdrop-blur-md border-b border-purple-500/20 sticky top-0 z-50">
+      <header className="bg-black/30 backdrop-blur-md border-b border-cyan-500/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
-              <Award className="h-8 w-8 text-orange-400" />
+              <Award className="h-8 w-8 text-cyan-400" />
               <h1 className="text-2xl font-bold text-white">Telugu Cinema Hub</h1>
             </Link>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link to="/" className="text-white hover:text-orange-400 transition-colors font-medium">Home</Link>
-              <Link to="/reviews" className="text-white hover:text-orange-400 transition-colors font-medium">All Reviews</Link>
-              <Link to="/top-rated" className="text-white hover:text-orange-400 transition-colors font-medium">Top Rated</Link>
-              <Link to="/latest" className="text-white hover:text-orange-400 transition-colors font-medium">Latest Movies</Link>
-              <Link to="/upcoming" className="text-white hover:text-orange-400 transition-colors font-medium">Upcoming</Link>
+              <Link to="/" className="text-white hover:text-cyan-400 transition-colors font-medium">Home</Link>
+              <Link to="/reviews" className="text-white hover:text-cyan-400 transition-colors font-medium">All Reviews</Link>
+              <Link to="/top-rated" className="text-white hover:text-cyan-400 transition-colors font-medium">Top Rated</Link>
+              <Link to="/latest" className="text-white hover:text-cyan-400 transition-colors font-medium">Latest Movies</Link>
+              <Link to="/upcoming" className="text-white hover:text-cyan-400 transition-colors font-medium">Upcoming</Link>
+              <Link to="/contact" className="text-cyan-400 font-medium">Contact</Link>
             </nav>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-5xl font-bold text-white mb-4">
-              Get in <span className="text-orange-400">Touch</span>
+              Get in <span className="text-cyan-400">Touch</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Have questions about Telugu movies? Want to suggest a review? We'd love to hear from you!
@@ -65,46 +65,46 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Information */}
             <div className="space-y-8">
-              <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+              <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
                 <CardHeader>
-                  <CardTitle className="text-orange-400 text-2xl">Contact Information</CardTitle>
+                  <CardTitle className="text-cyan-400 text-2xl">Contact Information</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center space-x-4">
-                    <div className="bg-orange-500 p-3 rounded-full">
+                    <div className="bg-cyan-500 p-3 rounded-full">
                       <Mail className="h-6 w-6 text-white" />
                     </div>
                     <div>
                       <h3 className="text-white font-semibold">Email</h3>
-                      <p className="text-gray-300">info@telugucinemahub.com</p>
+                      <p className="text-gray-300">reddyhemanth142@gmail.com</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center space-x-4">
-                    <div className="bg-purple-500 p-3 rounded-full">
+                    <div className="bg-indigo-500 p-3 rounded-full">
                       <Phone className="h-6 w-6 text-white" />
                     </div>
                     <div>
                       <h3 className="text-white font-semibold">Phone</h3>
-                      <p className="text-gray-300">+91 9876543210</p>
+                      <p className="text-gray-300">+91 8790026979</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center space-x-4">
-                    <div className="bg-orange-500 p-3 rounded-full">
+                    <div className="bg-cyan-500 p-3 rounded-full">
                       <MapPin className="h-6 w-6 text-white" />
                     </div>
                     <div>
                       <h3 className="text-white font-semibold">Address</h3>
-                      <p className="text-gray-300">Film Nagar, Hyderabad<br />Telangana, India 500033</p>
+                      <p className="text-gray-300">Nellore, Andhra Pradesh<br />India 524101</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+              <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
                 <CardHeader>
-                  <CardTitle className="text-orange-400 text-2xl">Why Contact Us?</CardTitle>
+                  <CardTitle className="text-cyan-400 text-2xl">Why Contact Us?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="text-gray-300 space-y-3">
@@ -120,9 +120,9 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+            <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
               <CardHeader>
-                <CardTitle className="text-orange-400 text-2xl">Send us a Message</CardTitle>
+                <CardTitle className="text-cyan-400 text-2xl">Send us a Message</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -134,7 +134,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/10 border-purple-500/30 text-white placeholder-gray-400"
+                      className="bg-white/10 border-cyan-500/30 text-white placeholder-gray-400"
                       placeholder="Your full name"
                     />
                   </div>
@@ -147,7 +147,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/10 border-purple-500/30 text-white placeholder-gray-400"
+                      className="bg-white/10 border-cyan-500/30 text-white placeholder-gray-400"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -160,7 +160,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/10 border-purple-500/30 text-white placeholder-gray-400"
+                      className="bg-white/10 border-cyan-500/30 text-white placeholder-gray-400"
                       placeholder="What is this regarding?"
                     />
                   </div>
@@ -173,7 +173,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full px-3 py-2 bg-white/10 border border-purple-500/30 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      className="w-full px-3 py-2 bg-white/10 border border-cyan-500/30 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                       placeholder="Tell us more about your inquiry..."
                     />
                   </div>
@@ -181,7 +181,7 @@ const Contact = () => {
                   <Button 
                     type="submit"
                     size="lg"
-                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold"
+                    className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold"
                   >
                     <Send className="h-5 w-5 mr-2" />
                     Send Message
@@ -201,30 +201,30 @@ const Contact = () => {
               Frequently Asked Questions
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+              <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
                 <CardContent className="p-6">
-                  <h4 className="text-orange-400 font-semibold mb-2">How often do you update reviews?</h4>
+                  <h4 className="text-cyan-400 font-semibold mb-2">How often do you update reviews?</h4>
                   <p className="text-gray-300">We update our reviews weekly with the latest Telugu movie releases and re-reviews of classic films.</p>
                 </CardContent>
               </Card>
               
-              <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+              <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
                 <CardContent className="p-6">
-                  <h4 className="text-orange-400 font-semibold mb-2">Can I submit movie suggestions?</h4>
+                  <h4 className="text-cyan-400 font-semibold mb-2">Can I submit movie suggestions?</h4>
                   <p className="text-gray-300">Absolutely! Use the contact form above to suggest movies you'd like us to review.</p>
                 </CardContent>
               </Card>
               
-              <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+              <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
                 <CardContent className="p-6">
-                  <h4 className="text-orange-400 font-semibold mb-2">Do you cover only new releases?</h4>
+                  <h4 className="text-cyan-400 font-semibold mb-2">Do you cover only new releases?</h4>
                   <p className="text-gray-300">No, we cover both new releases and classic Telugu films from all eras of cinema.</p>
                 </CardContent>
               </Card>
               
-              <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+              <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
                 <CardContent className="p-6">
-                  <h4 className="text-orange-400 font-semibold mb-2">How can I advertise with you?</h4>
+                  <h4 className="text-cyan-400 font-semibold mb-2">How can I advertise with you?</h4>
                   <p className="text-gray-300">For advertising and partnership opportunities, please contact us using the form above.</p>
                 </CardContent>
               </Card>

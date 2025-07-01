@@ -92,8 +92,6 @@ export const allMovies: Movie[] = [
     language: "Telugu",
     duration: "175 min"
   }
-  // Adding 100+ more movies would make this file too long for this response
-  // In a real application, you would have a comprehensive database
 ];
 
 // Generate additional movies programmatically to reach 500+
@@ -143,9 +141,30 @@ export const movies = [...allMovies, ...generateAdditionalMovies()];
 // Filter functions
 export const getLatestMovies = () => movies.filter(movie => movie.year >= 2023).slice(0, 20);
 export const getTopRatedMovies = () => movies.filter(movie => movie.rating >= 8.5).slice(0, 20);
+
+// Expanded upcoming movies list with 100+ movies
 export const getUpcomingMovies = () => {
-  // Sample upcoming movies for 2025-2026
-  return [
+  const directors = ["S.S. Rajamouli", "Sukumar", "Prashanth Neel", "Koratala Siva", "Vamshi Paidipally", "Trivikram", "Harish Shankar", "Boyapati Srinu", "Anil Ravipudi", "Maruthi"];
+  const actors = ["Allu Arjun", "Prabhas", "Jr NTR", "Ram Charan", "Mahesh Babu", "Pawan Kalyan", "Vijay Deverakonda", "Nani", "Ravi Teja", "Bellamkonda Sreenivas"];
+  const actresses = ["Rashmika Mandanna", "Pooja Hegde", "Samantha", "Kajal Aggarwal", "Tamannaah", "Shruti Haasan", "Kiara Advani", "Janhvi Kapoor"];
+  const genres = [["Action", "Drama"], ["Romance", "Comedy"], ["Thriller", "Action"], ["Family", "Drama"], ["Comedy", "Romance"], ["Sci-Fi", "Action"], ["Historical", "Drama"]];
+  const images = [
+    "https://images.unsplash.com/photo-1489599849989-7a5e91bf0d82?w=400&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1552057426-c4d48c24e314?w=400&h=600&fit=crop"
+  ];
+
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const statuses = ["Pre-Production", "Filming", "Post-Production", "Announced"];
+
+  const upcomingMovies = [];
+
+  // Add some specific high-profile upcoming movies first
+  const specificMovies = [
     {
       id: 501,
       title: "Pushpa 3: The Kingdom",
@@ -158,21 +177,70 @@ export const getUpcomingMovies = () => {
       cast: ["Allu Arjun", "Fahadh Faasil"],
       language: "Telugu",
       duration: "TBA",
-      releaseDate: "December 2025"
+      releaseDate: "December 2025",
+      status: "Pre-Production"
     },
     {
       id: 502,
-      title: "Baahubali 3",
+      title: "RRR 2",
       director: "S.S. Rajamouli",
       year: 2026,
       rating: 0,
-      genre: ["Action", "Drama", "Fantasy"],
-      description: "The epic saga continues with a new generation in the kingdom of Mahishmati.",
-      image: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop",
-      cast: ["TBA"],
+      genre: ["Action", "Drama", "History"],
+      description: "The highly anticipated sequel to the blockbuster RRR.",
+      image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=600&fit=crop",
+      cast: ["Ram Charan", "Jr NTR", "Alia Bhatt"],
       language: "Telugu",
       duration: "TBA",
-      releaseDate: "April 2026"
+      releaseDate: "April 2026",
+      status: "Announced"
+    },
+    {
+      id: 503,
+      title: "Salaar Part 2",
+      director: "Prashanth Neel",
+      year: 2025,
+      rating: 0,
+      genre: ["Action", "Thriller"],
+      description: "The second part of the Salaar saga continues with more intense action.",
+      image: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop",
+      cast: ["Prabhas", "Prithviraj Sukumaran", "Shruti Haasan"],
+      language: "Telugu",
+      duration: "TBA",
+      releaseDate: "June 2025",
+      status: "Filming"
     }
   ];
+
+  upcomingMovies.push(...specificMovies);
+
+  // Generate 97 more upcoming movies to reach 100+
+  for (let i = 504; i <= 600; i++) {
+    const director = directors[i % directors.length];
+    const actor = actors[i % actors.length];
+    const actress = actresses[i % actresses.length];
+    const genre = genres[i % genres.length];
+    const year = i % 2 === 0 ? 2025 : 2026;
+    const month = months[i % months.length];
+    const image = images[i % images.length];
+    const status = statuses[i % statuses.length];
+    
+    upcomingMovies.push({
+      id: i,
+      title: `Upcoming Telugu Movie ${i - 500}`,
+      director: director,
+      year: year,
+      rating: 0,
+      genre: genre,
+      description: `An exciting upcoming Telugu film featuring stellar performances and engaging storytelling that promises to captivate audiences.`,
+      image: image,
+      cast: [actor, actress, "Supporting Actor"],
+      language: "Telugu",
+      duration: "TBA",
+      releaseDate: `${month} ${year}`,
+      status: status
+    });
+  }
+  
+  return upcomingMovies;
 };
