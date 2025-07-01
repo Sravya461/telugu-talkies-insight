@@ -5,58 +5,63 @@ import { Star, Calendar, Clock, Users, Play, ArrowLeft, Share2, Heart, Bookmark 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { movies } from '@/data/movies';
 
 const MovieDetail = () => {
   const { id } = useParams();
   
-  // Sample movie data - in a real app, this would be fetched based on the ID
-  const movie = {
-    id: parseInt(id || '1'),
-    title: "RRR",
-    director: "S.S. Rajamouli",
-    year: 2022,
-    rating: 9.2,
-    genre: ["Action", "Drama", "History"],
-    description: "A fictitious story about two legendary revolutionaries and their journey away from home before they started fighting for their country in 1920s. Set in the backdrop of British colonial rule, the film showcases the friendship between Alluri Sitarama Raju and Komaram Bheem, two real-life heroes who fought against the oppressive regime.",
-    image: "https://images.unsplash.com/photo-1489599849989-7a5e91bf0d82?w=800&h=600&fit=crop",
-    cast: ["N.T. Rama Rao Jr.", "Ram Charan", "Alia Bhatt", "Ajay Devgan"],
-    language: "Telugu",
-    duration: "187 min",
-    trailerUrl: "https://www.youtube.com/watch?v=f_vbAtFSEc0",
-    boxOffice: "₹1,200 Cr",
-    budget: "₹550 Cr",
-    releaseDate: "25 March 2022",
-    producer: "D. V. V. Danayya",
-    music: "M. M. Keeravani",
-    cinematography: "K. K. Senthil Kumar",
-    fullReview: "RRR is a spectacular visual feast that showcases the best of Indian cinema. S.S. Rajamouli has crafted an epic tale that combines history, mythology, and pure entertainment in a way that few filmmakers can achieve. The film's technical brilliance, combined with powerhouse performances from Ram Charan and Jr. NTR, makes it a cinematic experience that transcends language barriers. The action sequences are choreographed with precision, and the emotional core of the story resonates deeply. This is Telugu cinema at its finest."
-  };
+  // Find the movie by ID from the movies data
+  const movie = movies.find(m => m.id === parseInt(id || '1')) || movies[0];
 
   const handleTrailerClick = () => {
     if (movie.trailerUrl) {
       window.open(movie.trailerUrl, '_blank');
+    } else {
+      // Fallback YouTube search
+      const searchQuery = `${movie.title} ${movie.year} trailer`;
+      window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(searchQuery)}`, '_blank');
+    }
+  };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: `${movie.title} - Telugu Cinema Hub Review`,
+        text: `Check out this amazing Telugu movie: ${movie.title} (${movie.year}) - Rating: ${movie.rating}/10`,
+        url: window.location.href,
+      }).catch(console.error);
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('Movie link copied to clipboard!');
+      });
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-cyan-800">
       {/* Header */}
-      <header className="bg-black/30 backdrop-blur-md border-b border-purple-500/20 sticky top-0 z-50">
+      <header className="bg-black/30 backdrop-blur-md border-b border-cyan-500/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2">
-              <ArrowLeft className="h-6 w-6 text-orange-400" />
-              <span className="text-white font-medium">Back to Home</span>
+            <Link to="/reviews" className="flex items-center space-x-2">
+              <ArrowLeft className="h-6 w-6 text-cyan-400" />
+              <span className="text-white font-medium">Back to Reviews</span>
             </Link>
             <div className="flex items-center space-x-2">
-              <Button variant="outline" size="sm" className="border-purple-500/30 text-purple-300">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleShare}
+                className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20"
+              >
                 <Share2 className="h-4 w-4 mr-2" />
                 Share
               </Button>
-              <Button variant="outline" size="sm" className="border-orange-500/30 text-orange-400">
+              <Button variant="outline" size="sm" className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20">
                 <Heart className="h-4 w-4" />
               </Button>
-              <Button variant="outline" size="sm" className="border-orange-500/30 text-orange-400">
+              <Button variant="outline" size="sm" className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20">
                 <Bookmark className="h-4 w-4" />
               </Button>
             </div>
@@ -84,11 +89,11 @@ const MovieDetail = () => {
                   {movie.title}
                 </h1>
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="flex items-center space-x-2 bg-orange-500 rounded-full px-4 py-2">
+                  <div className="flex items-center space-x-2 bg-cyan-500 rounded-full px-4 py-2">
                     <Star className="h-5 w-5 text-white fill-white" />
                     <span className="text-white font-bold text-lg">{movie.rating}</span>
                   </div>
-                  <Badge className="bg-purple-500 text-white font-semibold px-3 py-1">
+                  <Badge className="bg-indigo-500 text-white font-semibold px-3 py-1">
                     {movie.language}
                   </Badge>
                 </div>
@@ -96,26 +101,26 @@ const MovieDetail = () => {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center">
-                  <div className="text-orange-400 font-semibold">Year</div>
+                  <div className="text-cyan-400 font-semibold">Year</div>
                   <div className="text-white">{movie.year}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-orange-400 font-semibold">Duration</div>
+                  <div className="text-cyan-400 font-semibold">Duration</div>
                   <div className="text-white">{movie.duration}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-orange-400 font-semibold">Box Office</div>
-                  <div className="text-white">{movie.boxOffice}</div>
+                  <div className="text-cyan-400 font-semibold">Box Office</div>
+                  <div className="text-white">{movie.boxOffice || 'N/A'}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-orange-400 font-semibold">Budget</div>
-                  <div className="text-white">{movie.budget}</div>
+                  <div className="text-cyan-400 font-semibold">Budget</div>
+                  <div className="text-white">{movie.budget || 'N/A'}</div>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2">
                 {movie.genre.map((g) => (
-                  <Badge key={g} variant="outline" className="border-orange-400/30 text-orange-400 bg-orange-400/10">
+                  <Badge key={g} variant="outline" className="border-cyan-400/30 text-cyan-400 bg-cyan-400/10">
                     {g}
                   </Badge>
                 ))}
@@ -123,11 +128,11 @@ const MovieDetail = () => {
 
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-orange-400 font-semibold mb-2">Director</h3>
+                  <h3 className="text-cyan-400 font-semibold mb-2">Director</h3>
                   <p className="text-white text-lg">{movie.director}</p>
                 </div>
                 <div>
-                  <h3 className="text-orange-400 font-semibold mb-2">Starring</h3>
+                  <h3 className="text-cyan-400 font-semibold mb-2">Starring</h3>
                   <p className="text-white text-lg">{movie.cast.join(', ')}</p>
                 </div>
               </div>
@@ -136,7 +141,7 @@ const MovieDetail = () => {
                 <Button 
                   size="lg" 
                   onClick={handleTrailerClick}
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-8"
                 >
                   <Play className="h-5 w-5 mr-2" />
                   Watch Trailer
@@ -144,7 +149,7 @@ const MovieDetail = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-purple-500/30 text-purple-300 hover:bg-purple-500/20"
+                  className="border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20"
                 >
                   Add to Watchlist
                 </Button>
@@ -159,10 +164,10 @@ const MovieDetail = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-6">Full Review</h2>
-            <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+            <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
               <CardContent className="p-8">
                 <p className="text-gray-200 text-lg leading-relaxed">
-                  {movie.fullReview}
+                  {movie.description} This {movie.language} film directed by {movie.director} showcases excellent cinematography and compelling performances from {movie.cast.join(', ')}. The movie delivers on multiple fronts with its engaging storyline, technical brilliance, and memorable characters. With a runtime of {movie.duration}, it maintains good pacing throughout and keeps the audience engaged. The film's rating of {movie.rating}/10 reflects its quality and audience appreciation.
                 </p>
               </CardContent>
             </Card>
@@ -176,41 +181,41 @@ const MovieDetail = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-6">Movie Details</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+              <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
                 <CardContent className="p-6">
-                  <h3 className="text-orange-400 font-semibold mb-4">Production Details</h3>
+                  <h3 className="text-cyan-400 font-semibold mb-4">Production Details</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <span className="text-gray-300">Producer:</span>
-                      <span className="text-white">{movie.producer}</span>
+                      <span className="text-white">{movie.producer || 'N/A'}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-300">Music:</span>
-                      <span className="text-white">{movie.music}</span>
+                      <span className="text-white">{movie.music || 'N/A'}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-300">Cinematography:</span>
-                      <span className="text-white">{movie.cinematography}</span>
+                      <span className="text-white">{movie.cinematography || 'N/A'}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-300">Release Date:</span>
-                      <span className="text-white">{movie.releaseDate}</span>
+                      <span className="text-white">{movie.releaseDate || `${movie.year}`}</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
               
-              <Card className="bg-white/10 backdrop-blur-md border-purple-500/30">
+              <Card className="bg-white/10 backdrop-blur-md border-cyan-500/30">
                 <CardContent className="p-6">
-                  <h3 className="text-orange-400 font-semibold mb-4">Box Office Performance</h3>
+                  <h3 className="text-cyan-400 font-semibold mb-4">Box Office Performance</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <span className="text-gray-300">Budget:</span>
-                      <span className="text-white">{movie.budget}</span>
+                      <span className="text-white">{movie.budget || 'N/A'}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-300">Box Office:</span>
-                      <span className="text-white">{movie.boxOffice}</span>
+                      <span className="text-white">{movie.boxOffice || 'N/A'}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-300">Rating:</span>
