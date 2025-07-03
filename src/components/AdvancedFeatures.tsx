@@ -129,6 +129,186 @@ const AdvancedFeatures = () => {
       icon: <Calendar className="h-6 w-6" />,
       title: "Movie Calendar",
       description: "Plan your movie watching schedule"
+    },
+    {
+      icon: <Search className="h-6 w-6" />,
+      title: "Voice Search",
+      description: "Search movies using voice commands"
+    },
+    {
+      icon: <Filter className="h-6 w-6" />,
+      title: "Advanced Sorting",
+      description: "Sort by release date, rating, popularity, alphabetical"
+    },
+    {
+      icon: <Star className="h-6 w-6" />,
+      title: "Custom Rating Scale",
+      description: "Use different rating systems (5-star, 10-point, etc.)"
+    },
+    {
+      icon: <Bookmark className="h-6 w-6" />,
+      title: "Multiple Watchlists",
+      description: "Create and organize multiple themed watchlists"
+    },
+    {
+      icon: <Share2 className="h-6 w-6" />,
+      title: "Export Lists",
+      description: "Export your movie lists to various formats"
+    },
+    {
+      icon: <Heart className="h-6 w-6" />,
+      title: "Mood-based Recommendations",
+      description: "Get movie suggestions based on your current mood"
+    },
+    {
+      icon: <Download className="h-6 w-6" />,
+      title: "Bulk Download",
+      description: "Download multiple reviews and data at once"
+    },
+    {
+      icon: <Eye className="h-6 w-6" />,
+      title: "View History Analytics",
+      description: "Detailed analytics of your viewing patterns"
+    },
+    {
+      icon: <Clock className="h-6 w-6" />,
+      title: "Time-based Filters",
+      description: "Filter movies by duration, decade, or era"
+    },
+    {
+      icon: <Calendar className="h-6 w-6" />,
+      title: "Reminder System",
+      description: "Set reminders for movie releases and screenings"
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: "Social Groups",
+      description: "Join and create movie discussion groups"
+    },
+    {
+      icon: <Award className="h-6 w-6" />,
+      title: "Achievement System",
+      description: "Unlock badges and achievements for movie watching"
+    },
+    {
+      icon: <TrendingUp className="h-6 w-6" />,
+      title: "Box Office Tracking",
+      description: "Track real-time box office performance"
+    },
+    {
+      icon: <Play className="h-6 w-6" />,
+      title: "Video Reviews",
+      description: "Watch and create video reviews"
+    },
+    {
+      icon: <Shuffle className="h-6 w-6" />,
+      title: "Smart Recommendations",
+      description: "AI-powered personalized movie recommendations"
+    },
+    {
+      icon: <Settings className="h-6 w-6" />,
+      title: "Advanced Preferences",
+      description: "Detailed customization of all app features"
+    },
+    {
+      icon: <Bell className="h-6 w-6" />,
+      title: "Smart Notifications",
+      description: "Intelligent notifications based on your interests"
+    },
+    {
+      icon: <Globe className="h-6 w-6" />,
+      title: "Regional Content",
+      description: "Explore movies from different Telugu regions"
+    },
+    {
+      icon: <Sun className="h-6 w-6" />,
+      title: "Custom Themes",
+      description: "Create and share custom color themes"
+    },
+    {
+      icon: <Volume2 className="h-6 w-6" />,
+      title: "Audio Descriptions",
+      description: "Audio descriptions for accessibility"
+    },
+    {
+      icon: <Maximize className="h-6 w-6" />,
+      title: "Picture-in-Picture",
+      description: "Watch trailers while browsing other content"
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: "Family Accounts",
+      description: "Create separate profiles for family members"
+    },
+    {
+      icon: <Star className="h-6 w-6" />,
+      title: "Professional Reviews",
+      description: "Access reviews from professional critics"
+    },
+    {
+      icon: <Calendar className="h-6 w-6" />,
+      title: "Festival Tracking",
+      description: "Track movies in film festivals"
+    },
+    {
+      icon: <Search className="h-6 w-6" />,
+      title: "Barcode Scanner",
+      description: "Scan movie DVDs/Blu-rays for instant info"
+    },
+    {
+      icon: <Filter className="h-6 w-6" />,
+      title: "Content Warnings",
+      description: "Filter content based on sensitivity preferences"
+    },
+    {
+      icon: <Star className="h-6 w-6" />,
+      title: "Detailed Analytics",
+      description: "Comprehensive viewing and rating analytics"
+    },
+    {
+      icon: <Bookmark className="h-6 w-6" />,
+      title: "Quick Actions",
+      description: "Keyboard shortcuts for faster navigation"
+    },
+    {
+      icon: <Share2 className="h-6 w-6" />,
+      title: "Social Media Integration",
+      description: "Share directly to social media platforms"
+    },
+    {
+      icon: <Heart className="h-6 w-6" />,
+      title: "Wishlist Management",
+      description: "Manage movies you want to watch"
+    },
+    {
+      icon: <Download className="h-6 w-6" />,
+      title: "Cloud Sync",
+      description: "Sync your data across all devices"
+    },
+    {
+      icon: <Eye className="h-6 w-6" />,
+      title: "Preview Mode",
+      description: "Quick preview of movie details without opening"
+    },
+    {
+      icon: <Clock className="h-6 w-6" />,
+      title: "Session Timer",
+      description: "Track how long you spend browsing movies"
+    },
+    {
+      icon: <Calendar className="h-6 w-6" />,
+      title: "Anniversary Tracking",
+      description: "Track movie anniversaries and milestones"
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: "Collaborative Lists",
+      description: "Create and share lists with friends"
+    },
+    {
+      icon: <Award className="h-6 w-6" />,
+      title: "Industry News",
+      description: "Stay updated with Telugu film industry news"
     }
   ];
 
@@ -137,26 +317,26 @@ const AdvancedFeatures = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-white mb-4">
-            24 Advanced <span className="text-orange-400">Features</span>
+            58 Advanced <span className="text-accent">Features</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Discover all the powerful features that make Telugu Cinema Hub your ultimate movie companion
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-white/10 backdrop-blur-md border-purple-500/30 hover:bg-white/20 transition-all duration-300 group">
+            <Card key={index} className="bg-card/50 backdrop-blur-md border-primary/30 hover:bg-card/80 transition-all duration-300 group">
               <CardHeader className="pb-3">
                 <div className="flex items-center space-x-3">
-                  <div className="bg-gradient-to-r from-orange-500 to-purple-500 p-2 rounded-lg text-white group-hover:scale-110 transition-transform">
+                  <div className="bg-gradient-to-r from-primary to-accent p-2 rounded-lg text-primary-foreground group-hover:scale-110 transition-transform">
                     {feature.icon}
                   </div>
-                  <CardTitle className="text-white text-lg">{feature.title}</CardTitle>
+                  <CardTitle className="text-foreground text-lg">{feature.title}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-300 text-sm">{feature.description}</p>
+                <p className="text-muted-foreground text-sm">{feature.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -164,41 +344,41 @@ const AdvancedFeatures = () => {
 
         {/* Interactive Demo Section */}
         <div className="mt-16">
-          <Card className="bg-white/10 backdrop-blur-md border-purple-500/30 max-w-4xl mx-auto">
+          <Card className="bg-card/50 backdrop-blur-md border-primary/30 max-w-4xl mx-auto">
             <CardHeader>
-              <CardTitle className="text-center text-orange-400 text-2xl">Try Our Features</CardTitle>
+              <CardTitle className="text-center text-accent text-2xl">Try Our Features</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button 
                   onClick={() => setIsDarkMode(!isDarkMode)}
-                  className="bg-purple-500 hover:bg-purple-600"
+                  className="bg-primary hover:bg-primary/80"
                 >
                   {isDarkMode ? <Sun className="h-4 w-4 mr-2" /> : <Moon className="h-4 w-4 mr-2" />}
                   Toggle Theme
                 </Button>
                 <Button 
                   onClick={() => setNotifications(!notifications)}
-                  className="bg-orange-500 hover:bg-orange-600"
+                  className="bg-accent hover:bg-accent/80 text-accent-foreground"
                 >
                   <Bell className="h-4 w-4 mr-2" />
                   {notifications ? 'Disable' : 'Enable'} Notifications
                 </Button>
-                <Button className="bg-green-500 hover:bg-green-600">
+                <Button className="bg-secondary hover:bg-secondary/80">
                   <Heart className="h-4 w-4 mr-2" />
                   Add to Favorites
                 </Button>
-                <Button className="bg-blue-500 hover:bg-blue-600">
+                <Button className="bg-muted hover:bg-muted/80">
                   <Share2 className="h-4 w-4 mr-2" />
                   Share
                 </Button>
               </div>
               
               <div className="text-center">
-                <Badge className="bg-orange-400 text-black font-semibold px-4 py-2">
+                <Badge className="bg-accent text-accent-foreground font-semibold px-4 py-2">
                   {notifications ? 'Notifications Enabled' : 'Notifications Disabled'}
                 </Badge>
-                <Badge className="bg-purple-400 text-white font-semibold px-4 py-2 ml-2">
+                <Badge className="bg-primary text-primary-foreground font-semibold px-4 py-2 ml-2">
                   {isDarkMode ? 'Dark Mode' : 'Light Mode'}
                 </Badge>
               </div>

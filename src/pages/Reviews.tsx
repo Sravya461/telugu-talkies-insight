@@ -25,22 +25,22 @@ const Reviews = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-cyan-800">
+    <div className="min-h-screen bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20 dark:from-primary/10 dark:via-secondary/5 dark:to-accent/10">
       {/* Header */}
-      <header className="bg-black/30 backdrop-blur-md border-b border-cyan-500/20 sticky top-0 z-50">
+      <header className="bg-card/30 backdrop-blur-md border-b border-primary/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
-              <Award className="h-8 w-8 text-cyan-400" />
-              <h1 className="text-2xl font-bold text-white">Telugu Cinema Hub</h1>
+              <Award className="h-8 w-8 text-primary" />
+              <h1 className="text-2xl font-bold text-foreground">Telugu Cinema Hub</h1>
             </Link>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link to="/" className="text-white hover:text-cyan-400 transition-colors font-medium">Home</Link>
-              <Link to="/reviews" className="text-cyan-400 font-medium">All Reviews</Link>
-              <Link to="/top-rated" className="text-white hover:text-cyan-400 transition-colors font-medium">Top Rated</Link>
-              <Link to="/latest" className="text-white hover:text-cyan-400 transition-colors font-medium">Latest Movies</Link>
-              <Link to="/upcoming" className="text-white hover:text-cyan-400 transition-colors font-medium">Upcoming</Link>
-              <Link to="/contact" className="text-white hover:text-cyan-400 transition-colors font-medium">Contact</Link>
+              <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium">Home</Link>
+              <Link to="/reviews" className="text-primary font-medium">All Reviews</Link>
+              <Link to="/top-rated" className="text-foreground hover:text-primary transition-colors font-medium">Top Rated</Link>
+              <Link to="/latest" className="text-foreground hover:text-primary transition-colors font-medium">Latest Movies</Link>
+              <Link to="/upcoming" className="text-foreground hover:text-primary transition-colors font-medium">Upcoming</Link>
+              <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium">Contact</Link>
             </nav>
           </div>
         </div>
@@ -50,10 +50,10 @@ const Reviews = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-5xl font-bold text-white mb-4">
-              All Movie <span className="text-cyan-400">Reviews</span>
+            <h2 className="text-5xl font-bold text-foreground mb-4">
+              All Movie <span className="text-primary">Reviews</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Explore our comprehensive collection of over 500 Telugu movie reviews and ratings
             </p>
           </div>
@@ -62,13 +62,13 @@ const Reviews = () => {
           <div className="max-w-4xl mx-auto mb-12">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
                 <Input
                   type="text"
                   placeholder="Search movies, directors, actors..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-white/10 border-cyan-500/30 text-white placeholder-gray-400 h-12"
+                  className="pl-10 bg-card/20 border-primary/30 text-foreground placeholder-muted-foreground h-12"
                 />
               </div>
               <CategoryFilter 
@@ -81,7 +81,7 @@ const Reviews = () => {
 
           {/* Results Count */}
           <div className="text-center mb-8">
-            <p className="text-gray-300 text-lg">
+            <p className="text-muted-foreground text-lg">
               Showing {filteredMovies.length} movies {searchTerm && `for "${searchTerm}"`}
             </p>
           </div>
@@ -96,7 +96,7 @@ const Reviews = () => {
           {/* Load More Button */}
           {filteredMovies.length > 20 && (
             <div className="text-center mt-12">
-              <button className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+              <button className="bg-primary hover:bg-primary/80 text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-colors">
                 Load More Movies
               </button>
             </div>
