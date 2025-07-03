@@ -23,19 +23,34 @@ const MovieDetail = () => {
     }
   };
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: `${movie.title} - Telugu Cinema Hub Review`,
-        text: `Check out this amazing Telugu movie: ${movie.title} (${movie.year}) - Rating: ${movie.rating}/10`,
-        url: window.location.href,
-      }).catch(console.error);
-    } else {
-      // Fallback: copy to clipboard
-      navigator.clipboard.writeText(window.location.href).then(() => {
+  const [isLiked, setIsLiked] = React.useState(false);
+  const [isBookmarked, setIsBookmarked] = React.useState(false);
+
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: `${movie.title} - Telugu Cinema Hub Review`,
+          text: `Check out this amazing Telugu movie: ${movie.title} (${movie.year}) - Rating: ${movie.rating}/10`,
+          url: window.location.href,
+        });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
         alert('Movie link copied to clipboard!');
-      });
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
     }
+  };
+
+  const handleLike = () => {
+    setIsLiked(!isLiked);
+    // Here you could add API call to save like status
+  };
+
+  const handleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+    // Here you could add API call to save bookmark status
   };
 
   return (
@@ -58,11 +73,21 @@ const MovieDetail = () => {
                 <Share2 className="h-4 w-4 mr-2" />
                 Share
               </Button>
-              <Button variant="outline" size="sm" className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20">
-                <Heart className="h-4 w-4" />
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleLike}
+                className={`border-cyan-500/30 hover:bg-cyan-500/20 ${isLiked ? 'bg-red-500 text-white' : 'text-cyan-400'}`}
+              >
+                <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
               </Button>
-              <Button variant="outline" size="sm" className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20">
-                <Bookmark className="h-4 w-4" />
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleBookmark}
+                className={`border-cyan-500/30 hover:bg-cyan-500/20 ${isBookmarked ? 'bg-blue-500 text-white' : 'text-cyan-400'}`}
+              >
+                <Bookmark className={`h-4 w-4 ${isBookmarked ? 'fill-current' : ''}`} />
               </Button>
             </div>
           </div>

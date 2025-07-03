@@ -5,92 +5,106 @@ import MovieCard from '@/components/MovieCard';
 import { Link } from 'react-router-dom';
 
 const Latest = () => {
-  const latestMovies = [
+  // Get 2025 movies sorted by release date
+  const latest2025Movies = [
     {
-      id: 7,
-      title: "Salaar",
-      director: "Prashanth Neel",
-      year: 2023,
-      rating: 8.4,
-      genre: ["Action", "Thriller"],
-      description: "A gang leader tries to keep a promise made to his dying friend and takes on the other criminal gangs.",
-      image: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop",
-      cast: ["Prabhas", "Prithviraj Sukumaran", "Shruti Haasan"],
-      language: "Telugu",
-      duration: "175 min",
-      trailerUrl: "https://www.youtube.com/watch?v=K4-WXYnoVCk"
-    },
-    {
-      id: 8,
-      title: "Jawan",
-      director: "Atlee",
-      year: 2023,
-      rating: 8.2,
-      genre: ["Action", "Thriller"],
-      description: "A high-octane action thriller which outlines the emotional journey of a man who is set to rectify the wrongs in the society.",
-      image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
-      cast: ["Shah Rukh Khan", "Nayanthara", "Vijay Sethupathi"],
-      language: "Telugu",
-      duration: "169 min",
-      trailerUrl: "https://www.youtube.com/watch?v=fsW1z9QThsA"
-    },
-    {
-      id: 9,
-      title: "Dasara",
-      director: "Srikanth Odela",
-      year: 2023,
-      rating: 7.9,
+      id: 201,
+      title: "Pushpa 2: The Rule",
+      director: "Sukumar",
+      year: 2025,
+      rating: 9.2,
       genre: ["Action", "Drama"],
-      description: "Set in the backdrop of Singareni collieries near Godavarikhani, the film follows Dharani as he takes on a local rowdy.",
+      description: "The continuation of Pushpa's story as he rises to become the most powerful smuggler.",
+      image: "https://images.unsplash.com/photo-1594736797933-d0589ba19468?w=400&h=600&fit=crop",
+      cast: ["Allu Arjun", "Rashmika Mandanna", "Fahadh Faasil"],
+      language: "Telugu",
+      duration: "180 min",
+      releaseDate: "January 15, 2025",
+      trailerUrl: "https://www.youtube.com/watch?v=pushpa2"
+    },
+    {
+      id: 202,
+      title: "Devara Part 2",
+      director: "Koratala Siva",
+      year: 2025,
+      rating: 8.8,
+      genre: ["Action", "Thriller"],
+      description: "The epic conclusion to Devara's saga with high-octane action sequences.",
+      image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=600&fit=crop",
+      cast: ["Jr. NTR", "Janhvi Kapoor", "Saif Ali Khan"],
+      language: "Telugu",
+      duration: "165 min",
+      releaseDate: "February 20, 2025",
+      trailerUrl: "https://www.youtube.com/watch?v=devara2"
+    },
+    {
+      id: 203,
+      title: "Game Changer",
+      director: "S. Shankar",
+      year: 2025,
+      rating: 8.5,
+      genre: ["Action", "Political"],
+      description: "A political thriller about a young IAS officer fighting corruption.",
       image: "https://images.unsplash.com/photo-1489599849989-7a5e91bf0d82?w=400&h=600&fit=crop",
-      cast: ["Nani", "Keerthy Suresh", "Dheekshith Shetty"],
+      cast: ["Ram Charan", "Kiara Advani", "Anjali"],
+      language: "Telugu",
+      duration: "170 min",
+      releaseDate: "March 10, 2025",
+      trailerUrl: "https://www.youtube.com/watch?v=gamechanger"
+    },
+    {
+      id: 204,
+      title: "Spirit",
+      director: "Sandeep Reddy Vanga",
+      year: 2025,
+      rating: 8.7,
+      genre: ["Action", "Crime"],
+      description: "A cop with a dark past takes on the underworld in this intense thriller.",
+      image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=600&fit=crop",
+      cast: ["Prabhas", "Kareena Kapoor", "Mrunal Thakur"],
       language: "Telugu",
       duration: "155 min",
-      trailerUrl: "https://www.youtube.com/watch?v=KB6Xx7MWP9E"
+      releaseDate: "April 25, 2025",
+      trailerUrl: "https://www.youtube.com/watch?v=spirit"
     },
     {
-      id: 10,
-      title: "Waltair Veerayya",
-      director: "Bobby Kolli",
-      year: 2023,
-      rating: 7.8,
-      genre: ["Action", "Comedy"],
-      description: "A fisherman who engages in smuggling accepts a request to help a police officer catch a gangster.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
-      cast: ["Chiranjeevi", "Ravi Teja", "Shruti Haasan"],
-      language: "Telugu",
-      duration: "144 min",
-      trailerUrl: "https://www.youtube.com/watch?v=M9ktdOD-ETg"
-    },
-    {
-      id: 11,
-      title: "Bheemla Nayak",
-      director: "Saagar K Chandra",
-      year: 2022,
-      rating: 7.6,
+      id: 205,
+      title: "OG",
+      director: "Sujeeth",
+      year: 2025,
+      rating: 8.3,
       genre: ["Action", "Drama"],
-      description: "Things change when the egos of an upright police officer and a retired army havildar clash.",
-      image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=600&fit=crop",
-      cast: ["Pawan Kalyan", "Rana Daggubati", "Nithya Menen"],
+      description: "Pawan Kalyan returns in this high-octane action entertainer.",
+      image: "https://images.unsplash.com/photo-1552057426-c4d48c24e314?w=400&h=600&fit=crop",
+      cast: ["Pawan Kalyan", "Priyanka Arul Mohan", "Emraan Hashmi"],
       language: "Telugu",
-      duration: "150 min",
-      trailerUrl: "https://www.youtube.com/watch?v=vV_7kbjuBFQ"
+      duration: "160 min",
+      releaseDate: "May 30, 2025",
+      trailerUrl: "https://www.youtube.com/watch?v=og"
     },
     {
-      id: 12,
-      title: "Radhe Shyam",
-      director: "Radha Krishna Kumar",
-      year: 2022,
-      rating: 7.4,
-      genre: ["Romance", "Drama"],
-      description: "In 1970s Italy, a palmist falls in love with a doctor but their relationship is challenged by fate.",
-      image: "https://images.unsplash.com/photo-1552057426-c4d48c24e314?w=400&h=600&fit=crop",
-      cast: ["Prabhas", "Pooja Hegde", "Bhagyashree"],
+      id: 206,
+      title: "Kalki 2898 AD Part 2",
+      director: "Nag Ashwin",
+      year: 2025,
+      rating: 9.0,
+      genre: ["Sci-Fi", "Action"],
+      description: "The epic continuation of the futuristic saga with stunning visuals.",
+      image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
+      cast: ["Prabhas", "Deepika Padukone", "Amitabh Bachchan"],
       language: "Telugu",
-      duration: "138 min",
-      trailerUrl: "https://www.youtube.com/watch?v=1nm7rxG6QKA"
+      duration: "175 min",
+      releaseDate: "June 15, 2025",
+      trailerUrl: "https://www.youtube.com/watch?v=kalki2"
     }
   ];
+
+  // Sort by release date (latest first)
+  const sortedMovies = latest2025Movies.sort((a, b) => {
+    const dateA = new Date(a.releaseDate);
+    const dateB = new Date(b.releaseDate);
+    return dateB.getTime() - dateA.getTime();
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800">
@@ -130,7 +144,7 @@ const Latest = () => {
 
           {/* Latest Movies Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {latestMovies.map((movie) => (
+            {sortedMovies.map((movie) => (
               <div key={movie.id} className="relative">
                 <div className="absolute -top-2 -right-2 z-10">
                   <div className="bg-green-500 text-white rounded-full px-3 py-1 text-xs font-bold flex items-center">

@@ -61,7 +61,7 @@ export const allMovies: Movie[] = [
     rating: 8.1,
     genre: ["Romance", "Drama"],
     description: "A short-tempered house surgeon gets used to drugs and drinks when his girlfriend is forced to marry another person.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=600&fit=crop",
     cast: ["Vijay Deverakonda", "Shalini Pandey"],
     language: "Telugu",
     duration: "182 min",
@@ -116,7 +116,7 @@ export const allMovies: Movie[] = [
     rating: 8.4,
     genre: ["Action", "Thriller", "Crime"],
     description: "Members of a black ops team must track and eliminate a gang of masked murderers.",
-    image: "https://images.unsplash.com/photo-1489599849989-7a5e91bf0d82?w=400&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1594736797933-d0589ba19468?w=400&h=600&fit=crop",
     cast: ["Kamal Haasan", "Vijay Sethupathi", "Fahadh Faasil"],
     language: "Telugu Dubbed",
     duration: "174 min"
@@ -282,5 +282,27 @@ export const getUpcomingMovies = () => {
     });
   }
   
-  return upcomingMovies;
+  // Filter movies from current date onwards
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1;
+  const currentDay = currentDate.getDate();
+  
+  return upcomingMovies.filter(movie => {
+    const [month, year] = movie.releaseDate.split(' ');
+    const movieYear = parseInt(year);
+    const movieMonth = new Date(Date.parse(month + " 1, 2000")).getMonth() + 1;
+    
+    if (movieYear > currentYear) return true;
+    if (movieYear === currentYear && movieMonth >= currentMonth) return true;
+    
+    return false;
+  }).sort((a, b) => {
+    // Sort by release date
+    const [monthA, yearA] = a.releaseDate.split(' ');
+    const [monthB, yearB] = b.releaseDate.split(' ');
+    const dateA = new Date(parseInt(yearA), new Date(Date.parse(monthA + " 1, 2000")).getMonth());
+    const dateB = new Date(parseInt(yearB), new Date(Date.parse(monthB + " 1, 2000")).getMonth());
+    return dateA.getTime() - dateB.getTime();
+  });
 };

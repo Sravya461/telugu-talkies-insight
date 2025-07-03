@@ -12,9 +12,21 @@ import { movies, getLatestMovies } from '@/data/movies';
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [featuredMovieIndex, setFeaturedMovieIndex] = useState(0);
 
-  const featuredMovie = movies[0]; // Use the first movie as featured
   const latestMovies = getLatestMovies();
+  const featuredMovie = latestMovies[featuredMovieIndex] || movies[0];
+
+  // Auto-rotate featured movie every 2 seconds
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setFeaturedMovieIndex((prevIndex) => 
+        (prevIndex + 1) % Math.min(latestMovies.length, 10) // Rotate among first 10 movies
+      );
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [latestMovies.length]);
 
   const categories = ['all', 'action', 'drama', 'romance', 'thriller', 'comedy', 'family'];
 
